@@ -1,0 +1,6 @@
+framework module Pods_greetGen {
+  umbrella header "Pods-greetGen-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E1408D97BC2981528E4B9D4 /* Pods_greetGen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647192D2DBECE1FDA08A2DFC /* Pods_greetGen.framework */; };
 		C6419B381E3938AD005AD917 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6419B371E3938AD005AD917 /* AppDelegate.swift */; };
 		C6419B3A1E3938AD005AD917 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6419B391E3938AD005AD917 /* ViewController.swift */; };
 		C6419B3D1E3938AD005AD917 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6419B3B1E3938AD005AD917 /* Main.storyboard */; };
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36371A298FABDC400EAA3BC7 /* Pods-greetGen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greetGen.release.xcconfig"; path = "Pods/Target Support Files/Pods-greetGen/Pods-greetGen.release.xcconfig"; sourceTree = "<group>"; };
+		647192D2DBECE1FDA08A2DFC /* Pods_greetGen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_greetGen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C564730C3DC4DD46CC7ADF52 /* Pods-greetGen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-greetGen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-greetGen/Pods-greetGen.debug.xcconfig"; sourceTree = "<group>"; };
 		C6419B341E3938AD005AD917 /* greetGen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = greetGen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6419B371E3938AD005AD917 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6419B391E3938AD005AD917 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E1408D97BC2981528E4B9D4 /* Pods_greetGen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6788898C7603DF7CD7CC5EE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C564730C3DC4DD46CC7ADF52 /* Pods-greetGen.debug.xcconfig */,
+				36371A298FABDC400EAA3BC7 /* Pods-greetGen.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B5315EB08B47697A6F27ECC8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				647192D2DBECE1FDA08A2DFC /* Pods_greetGen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C6419B2B1E3938AD005AD917 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,8 @@
 				C6419B4B1E3938AD005AD917 /* greetGenTests */,
 				C6419B561E3938AD005AD917 /* greetGenUITests */,
 				C6419B351E3938AD005AD917 /* Products */,
+				6788898C7603DF7CD7CC5EE2 /* Pods */,
+				B5315EB08B47697A6F27ECC8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C6419B5C1E3938AD005AD917 /* Build configuration list for PBXNativeTarget "greetGen" */;
 			buildPhases = (
+				A78662DA9451F8F41D68AB61 /* [CP] Check Pods Manifest.lock */,
 				C6419B301E3938AD005AD917 /* Sources */,
 				C6419B311E3938AD005AD917 /* Frameworks */,
 				C6419B321E3938AD005AD917 /* Resources */,
+				FB5D685AA1CCE7B789C94CB1 /* [CP] Embed Pods Frameworks */,
+				6488E21F495090303C72D96E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +283,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6488E21F495090303C72D96E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-greetGen/Pods-greetGen-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A78662DA9451F8F41D68AB61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FB5D685AA1CCE7B789C94CB1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-greetGen/Pods-greetGen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C6419B301E3938AD005AD917 /* Sources */ = {
@@ -411,6 +486,7 @@
 		};
 		C6419B5D1E3938AD005AD917 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C564730C3DC4DD46CC7ADF52 /* Pods-greetGen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T9R33YRSR8;
@@ -424,6 +500,7 @@
 		};
 		C6419B5E1E3938AD005AD917 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36371A298FABDC400EAA3BC7 /* Pods-greetGen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T9R33YRSR8;

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 enum MainSegmentState: Int {
     case useButton
     case useTextfield

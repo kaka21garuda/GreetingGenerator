@@ -142,7 +142,6 @@
                         <outlet property="mainLabel" destination="cop-Z9-IZb" id="JWf-ge-uhN"/>
                         <outlet property="mainSegment" destination="MV9-1z-BND" id="InA-PZ-whY"/>
                         <outlet property="nameTextField" destination="NgV-Lv-BnB" id="TxZ-Ts-egU"/>
-                        <outlet property="predefineGreetingsButton" destination="hIp-iB-3w4" id="jCQ-Bc-Tuf"/>
                         <outletCollection property="greetingsButton" destination="hIp-iB-3w4" collectionClass="NSMutableArray" id="cGs-eL-CSD"/>
                         <outletCollection property="greetingsButton" destination="Xk1-M0-4Sw" collectionClass="NSMutableArray" id="87p-FF-cvX"/>
                         <outletCollection property="greetingsButton" destination="V6f-2E-DQE" collectionClass="NSMutableArray" id="W0C-0e-4de"/>

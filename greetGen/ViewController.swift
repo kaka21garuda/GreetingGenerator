@@ -42,11 +42,29 @@ class ViewController: UIViewController {
         let greetingObservable: Observable<String?> = customGreetingTextField.rx.text.asObservable()
         
         let greetingWithNameObservable: Observable<String> = Observable.combineLatest(nameTextObservable, greetingObservable) { (string1: String?, string2: String?) in
-            
             return string2! + ", " + string1!
         }
         greetingWithNameObservable.bindTo(mainLabel.rx.text).addDisposableTo(disposeBag)
         
+        
+        let segmentedControlObservable: Observable<Int> = mainSegment.rx.value.asObservable()
+        
+        // MARK: Transformation
+        // Change the type of observable segmented control to bool, to enable the state.
+        let stateObservable: Observable<MainSegmentState> = segmentedControlObservable.map {
+            (selectedIndex: Int) -> MainSegmentState in
+            return MainSegmentState(rawValue: selectedIndex)!
+        }
+        
+        let greetingTextFieldEnabledObservable: Observable<Bool> = stateObservable.map {
+            (state: MainSegmentState) -> Bool in
+            
+            return state == .useTextfield
+            
+        }
+        // Binding
+        greetingTextFieldEnabledObservable.bindTo(customGreetingTextField.rx.isEnabled).addDisposableTo(disposeBag)
+
 }
 
 override func didReceiveMemoryWarning() {

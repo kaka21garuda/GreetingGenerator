@@ -22,6 +22,8 @@ enum TextFieldTag: Int {
 
 class ViewController: UIViewController {
     
+    let lastSelectedGreeting: Variable<String> = Variable("Hello")
+    
     // disposeBag variable prevent memory leak while binding.
     let disposeBag = DisposeBag()
     
@@ -30,8 +32,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var customGreetingTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
-    
-    
     @IBOutlet var greetingsButton: [UIButton]!
     
     override func viewDidLoad() {
@@ -41,37 +41,57 @@ class ViewController: UIViewController {
         let nameTextObservable: Observable<String?> = nameTextField.rx.text.asObservable()
         let greetingObservable: Observable<String?> = customGreetingTextField.rx.text.asObservable()
         
-        let greetingWithNameObservable: Observable<String> = Observable.combineLatest(nameTextObservable, greetingObservable) { (string1: String?, string2: String?) in
-            return string2! + ", " + string1!
-        }
-        greetingWithNameObservable.bindTo(mainLabel.rx.text).addDisposableTo(disposeBag)
-        
-        
         let segmentedControlObservable: Observable<Int> = mainSegment.rx.value.asObservable()
         
         // MARK: Transformation
-        // Change the type of observable segmented control to bool, to enable the state.
+        // return 0 or 1
         let stateObservable: Observable<MainSegmentState> = segmentedControlObservable.map {
             (selectedIndex: Int) -> MainSegmentState in
             return MainSegmentState(rawValue: selectedIndex)!
         }
         
+        // map stateObservable to covert 0 and 1 becoming False and True.
         let greetingTextFieldEnabledObservable: Observable<Bool> = stateObservable.map {
             (state: MainSegmentState) -> Bool in
             
             return state == .useTextfield
-            
         }
         // Binding
         greetingTextFieldEnabledObservable.bindTo(customGreetingTextField.rx.isEnabled).addDisposableTo(disposeBag)
-
+        
+        let buttonsObservable: Observable<Bool> = greetingTextFieldEnabledObservable.map {
+            (greetingEnabled) -> Bool in
+            return !greetingEnabled
+        }
+        
+        greetingsButton.forEach { (button) in
+            buttonsObservable.bindTo(button.rx.isEnabled).addDisposableTo(disposeBag)
+            
+            // subscribing the button tap, instead of using IBAction.
+            button.rx.tap.subscribe(onNext: { (nothing: Void) in
+                self.lastSelectedGreeting.value = button.currentTitle!
+            })
+        }
+        
+        let predefineGreetingObservable: Observable<String> = lastSelectedGreeting.asObservable()
+        
+        let finalGreetingObservable: Observable<String> = Observable.combineLatest(
+                    stateObservable,
+                    greetingObservable,
+                    predefineGreetingObservable,
+                    nameTextObservable)
+            
+        { (state: MainSegmentState,
+           customGreeting: String?,
+           predefineGreeting: String,
+           name: String?) -> String in
+            
+            switch state {
+                case .useTextfield: return customGreeting! + ", " + name!
+                case .useButton: return predefineGreeting + ", " + name!
+            }
+        }
+        
+        finalGreetingObservable.bindTo(mainLabel.rx.text).addDisposableTo(disposeBag)
+    }
 }
-
-override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-}
-
-
-}
-
